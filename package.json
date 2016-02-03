@@ -1,5 +1,5 @@
 {
-  "name": "merkleeyes",
+  "name": "js-merkleeyes",
   "version": "0.0.1",
   "description": "Javascript client for merkleeyes",
   "main": "index.js",
