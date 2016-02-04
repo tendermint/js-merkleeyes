@@ -12,7 +12,9 @@ Client.prototype.get = function(key, cb) {
   this.tmspCli.query(w.getBuffer(), function(res) {
     var r = new wire.Reader(res.data.toBuffer());
     var value = r.readByteArray();
-    cb(value);
+    if (!!cb) {
+      cb(value);
+    } // TODO else warn?
   });
   this.tmspCli.flush();
 }
@@ -23,7 +25,9 @@ Client.prototype.set = function(key, value, cb) {
   w.writeByteArray(new Buffer(key));
   w.writeByteArray(new Buffer(value));
   this.tmspCli.appendTx(w.getBuffer(), function(res) {
-    cb();
+    if (!!cb) {
+      cb();
+    }
   });
   this.tmspCli.flush();
 }
@@ -33,14 +37,18 @@ Client.prototype.rem = function(key, cb) {
   w.writeByte(0x02); // "Rem"
   w.writeByteArray(new Buffer(key));
   this.tmspCli.appendTx(w.getBuffer(), function(res) {
-    cb();
+    if (!!cb) {
+      cb();
+    }
   });
   this.tmspCli.flush();
 }
 
 Client.prototype.getHash = function(cb) {
   this.tmspCli.getHash(function(res) {
-    cb(res.data.toBuffer());
+    if (!!cb) {
+      cb(res.data.toBuffer());
+    }
   });
   this.tmspCli.flush();
 }
@@ -48,4 +56,3 @@ Client.prototype.getHash = function(cb) {
 module.exports = {
   Client: Client,
 };
-
