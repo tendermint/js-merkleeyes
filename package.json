@@ -1,6 +1,6 @@
 {
   "name": "js-merkleeyes",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Javascript client for merkleeyes",
   "main": "index.js",
   "dependencies": {
