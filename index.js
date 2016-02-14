@@ -44,13 +44,17 @@ Client.prototype.rem = function(key, cb) {
   this.tmspCli.flush();
 }
 
-Client.prototype.getHash = function(cb) {
-  this.tmspCli.getHash(function(res) {
+Client.prototype.commit = function(cb) {
+  this.tmspCli.commit(function(res) {
     if (!!cb) {
       cb(res.data.toBuffer());
     }
   });
   this.tmspCli.flush();
+}
+
+Client.prototype.close = function() {
+  this.tmspCli.close();
 }
 
 module.exports = {
