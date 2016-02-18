@@ -1,10 +1,10 @@
 {
   "name": "js-merkleeyes",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Javascript client for merkleeyes",
   "main": "index.js",
   "dependencies": {
-    "js-tmsp": "~0.0.6",
+    "js-tmsp": "~0.0.9",
     "js-wire": "~0.0.3"
   }
 }
